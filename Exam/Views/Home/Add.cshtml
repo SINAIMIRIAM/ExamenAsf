@@ -1,0 +1,98 @@
+﻿
+@{
+    Layout = null;
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+
+
+<section>
+    <form class="container row-space" id="lForm" name="lForm" method="post">
+
+        <div class="row login-form">
+            <div class="col-xs-10 col-sm-8 col-md-6 col-lg-4 col-lg-offset-4 col-md-offset-3 col-sm-offset-2 col-xs-offset-1">
+                <h2>Alta de Usuarios</h2>
+                <p>Llena los siguientes campos</p>
+                <div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Nombre">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Nombre de Usuario">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top:5px;">
+            <div class="col-xs-10 col-sm-8 col-md-6 col-lg-4 col-lg-offset-4 col-md-offset-3 col-sm-offset-2 col-xs-offset-1">
+                <button type="submit" class="btn btn-primary btn-rounded" id="Save">
+                    <span class="glyphicon glyphicon-chevron-right"></span> Guardar
+                </button>
+            </div>
+        </div>
+
+    </form>
+</section>
+<div class="modal fade" id="ModalError" tabindex="-1" role="dialog" aria-labelledby="nuevaUsuario">
+    <div class="modal-dialog modal-sm row-space" role="document">
+        <div class="modal-content table-responsive">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h5 class="texto_modal_cabecera" style="text-align:justify;">Error</h5>
+            </div>
+            <div class="modal-body">
+                <br>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="alert alert-danger">
+                            <strong>
+                                Error al insertar los datos
+                            </strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary btn-md" data-dismiss="modal"> <span class="glyphicon glyphicon-remove"></span> Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="ModalSuccess" tabindex="-1" role="dialog" aria-labelledby="nuevaUsuario">
+    <div class="modal-dialog modal-sm row-space" role="document">
+        <div class="modal-content table-responsive">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h5 class="texto_modal_cabecera" style="text-align:justify;">Exito</h5>
+            </div>
+            <div class="modal-body">
+                <br>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class=" alert alert-success">
+                            <strong>
+                                Se insertaron los datos correctamente
+                            </strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary btn-md" data-dismiss="modal"> <span class="glyphicon glyphicon-remove"></span> Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/Api/ThemeCustom.js"></script>
+<script src="~/Scripts/Api/User.js"></script>

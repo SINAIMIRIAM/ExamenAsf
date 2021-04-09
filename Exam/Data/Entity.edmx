@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CtxBOLSA_EXAMEN.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DATOS_PERSONALES">
+          <Key>
+            <PropertyRef Name="LLAVE_DATO_PERSONAL" />
+          </Key>
+          <Property Name="LLAVE_DATO_PERSONAL" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LLAVE_USUARIO" Type="bigint" />
+          <Property Name="NOMBRE" Type="nvarchar(max)" />
+          <Property Name="PATERNO" Type="nvarchar(max)" />
+          <Property Name="MATERNO" Type="nvarchar(max)" />
+          <Property Name="CIUDAD" Type="nvarchar(max)" />
+          <Property Name="CALLE" Type="nvarchar(max)" />
+          <Property Name="NUMERO" Type="nvarchar(max)" />
+          <Property Name="COLONIA" Type="nvarchar(max)" />
+          <Property Name="TELEFONO" Type="nvarchar(max)" />
+          <Property Name="OTRO_TEL" Type="nvarchar(max)" />
+          <Property Name="FECHA_NAC" Type="date" />
+          <Property Name="CURP" Type="nvarchar(max)" />
+          <Property Name="RFC" Type="nvarchar(max)" />
+          <Property Name="PASAPORTE" Type="nvarchar(max)" />
+          <Property Name="CARTILLA" Type="nvarchar(max)" />
+          <Property Name="GENERO" Type="nvarchar(max)" />
+          <Property Name="EDO_CIVIL" Type="nvarchar(max)" />
+          <Property Name="FECHA_ALTA" Type="datetime" />
+          <Property Name="MUN" Type="varchar(max)" />
+          <Property Name="EDO" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="EXP_LABORAL">
+          <Key>
+            <PropertyRef Name="LLAVE_EXP_LAB" />
+          </Key>
+          <Property Name="LLAVE_EXP_LAB" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LLAVE_USUARIO" Type="bigint" />
+          <Property Name="PUESTO" Type="nvarchar(max)" />
+          <Property Name="FUNCIONES" Type="nvarchar(max)" />
+          <Property Name="EMPRESA" Type="nvarchar(max)" />
+          <Property Name="NO_EMPLEADOS" Type="int" />
+          <Property Name="FECHA_INICIO" Type="nvarchar(max)" />
+          <Property Name="FECHA_FIN" Type="nvarchar(max)" />
+          <Property Name="RET_MENS_BRUTA" Type="bigint" />
+          <Property Name="RET_MENS_NETA" Type="bigint" />
+          <Property Name="FECHA_ALTA" Type="date" />
+          <Property Name="PAIS" Type="nvarchar(max)" />
+          <Property Name="LLAVE_DATO_PERSONAL" Type="bigint" />
+        </EntityType>
+        <EntityType Name="USUARIOS">
+          <Key>
+            <PropertyRef Name="LLAVE_USUARIO" />
+          </Key>
+          <Property Name="LLAVE_USUARIO" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USUARIO" Type="nvarchar" MaxLength="20" />
+          <Property Name="PASS" Type="nvarchar" MaxLength="20" />
+          <Property Name="EMAIL" Type="nvarchar(max)" />
+          <Property Name="FECHA_ALTA" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BOLSA_EXAMEN.sys.database_firewall_rules' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="database_firewall_rules">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="start_ip_address" />
+            <PropertyRef Name="end_ip_address" />
+            <PropertyRef Name="create_date" />
+            <PropertyRef Name="modify_date" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="start_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="end_ip_address" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="create_date" Type="datetime" Nullable="false" />
+          <Property Name="modify_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Function Name="ALL_USERS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="INSERT_USER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Pass" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Nombre" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Paterno" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Materno" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Ciudad" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Calle" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Numero" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Colonia" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Telefono" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="OtroTelefono" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="FechaNac" Type="datetime" Mode="In" />
+          <Parameter Name="Curp" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Rfc" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Pasaporte" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Cartilla" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Genero" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="EstadoCivil" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Municipio" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Estado" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="SELECT_USER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="CtxBOLSA_EXAMENStoreContainer">
+          <EntitySet Name="DATOS_PERSONALES" EntityType="Self.DATOS_PERSONALES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EXP_LABORAL" EntityType="Self.EXP_LABORAL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" store:Type="Views" store:Schema="sys">
+            <DefiningQuery>SELECT 
+    [database_firewall_rules].[id] AS [id], 
+    [database_firewall_rules].[name] AS [name], 
+    [database_firewall_rules].[start_ip_address] AS [start_ip_address], 
+    [database_firewall_rules].[end_ip_address] AS [end_ip_address], 
+    [database_firewall_rules].[create_date] AS [create_date], 
+    [database_firewall_rules].[modify_date] AS [modify_date]
+    FROM [sys].[database_firewall_rules] AS [database_firewall_rules]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CtxBOLSA_EXAMEN" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DATOS_PERSONALES">
+          <Key>
+            <PropertyRef Name="LLAVE_DATO_PERSONAL" />
+          </Key>
+          <Property Name="LLAVE_DATO_PERSONAL" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LLAVE_USUARIO" Type="Int64" />
+          <Property Name="NOMBRE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PATERNO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MATERNO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CIUDAD" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CALLE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NUMERO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="COLONIA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TELEFONO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OTRO_TEL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FECHA_NAC" Type="DateTime" Precision="0" />
+          <Property Name="CURP" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RFC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PASAPORTE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CARTILLA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GENERO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EDO_CIVIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FECHA_ALTA" Type="DateTime" Precision="3" />
+          <Property Name="MUN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EDO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EXP_LABORAL">
+          <Key>
+            <PropertyRef Name="LLAVE_EXP_LAB" />
+          </Key>
+          <Property Name="LLAVE_EXP_LAB" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LLAVE_USUARIO" Type="Int64" />
+          <Property Name="PUESTO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FUNCIONES" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EMPRESA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NO_EMPLEADOS" Type="Int32" />
+          <Property Name="FECHA_INICIO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FECHA_FIN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RET_MENS_BRUTA" Type="Int64" />
+          <Property Name="RET_MENS_NETA" Type="Int64" />
+          <Property Name="FECHA_ALTA" Type="DateTime" Precision="0" />
+          <Property Name="PAIS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LLAVE_DATO_PERSONAL" Type="Int64" />
+        </EntityType>
+        <EntityType Name="USUARIOS">
+          <Key>
+            <PropertyRef Name="LLAVE_USUARIO" />
+          </Key>
+          <Property Name="LLAVE_USUARIO" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USUARIO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PASS" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FECHA_ALTA" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="database_firewall_rules">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="start_ip_address" />
+            <PropertyRef Name="end_ip_address" />
+            <PropertyRef Name="create_date" />
+            <PropertyRef Name="modify_date" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="start_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="end_ip_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="BOLSA_EXAMENEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DATOS_PERSONALES" EntityType="Self.DATOS_PERSONALES" />
+          <EntitySet Name="EXP_LABORAL" EntityType="Self.EXP_LABORAL" />
+          <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" />
+          <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
+          <FunctionImport Name="ALL_USERS" ReturnType="Collection(CtxBOLSA_EXAMEN.ALL_USERS_Result)" />
+          <FunctionImport Name="INSERT_USER">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Pass" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Paterno" Mode="In" Type="String" />
+            <Parameter Name="Materno" Mode="In" Type="String" />
+            <Parameter Name="Ciudad" Mode="In" Type="String" />
+            <Parameter Name="Calle" Mode="In" Type="String" />
+            <Parameter Name="Numero" Mode="In" Type="String" />
+            <Parameter Name="Colonia" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="OtroTelefono" Mode="In" Type="String" />
+            <Parameter Name="FechaNac" Mode="In" Type="DateTime" />
+            <Parameter Name="Curp" Mode="In" Type="String" />
+            <Parameter Name="Rfc" Mode="In" Type="String" />
+            <Parameter Name="Pasaporte" Mode="In" Type="String" />
+            <Parameter Name="Cartilla" Mode="In" Type="String" />
+            <Parameter Name="Genero" Mode="In" Type="String" />
+            <Parameter Name="EstadoCivil" Mode="In" Type="String" />
+            <Parameter Name="Municipio" Mode="In" Type="String" />
+            <Parameter Name="Estado" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SELECT_USER" ReturnType="Collection(CtxBOLSA_EXAMEN.SELECT_USER_Result)">
+            <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="ALL_USERS_Result">
+          <Property Type="Int64" Name="LLAVE_USUARIO" Nullable="true" />
+          <Property Type="String" Name="NOMBRE" Nullable="true" />
+          <Property Type="String" Name="PATERNO" Nullable="true" />
+          <Property Type="String" Name="MATERNO" Nullable="true" />
+          <Property Type="String" Name="CIUDAD" Nullable="true" />
+          <Property Type="String" Name="GENERO" Nullable="true" />
+          <Property Type="DateTime" Name="FECHA_NAC" Nullable="true" />
+          <Property Type="String" Name="CURP" Nullable="true" />
+          <Property Type="String" Name="USUARIO" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="EMAIL" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SELECT_USER_Result">
+          <Property Type="Int64" Name="LLAVE_DATO_PERSONAL" Nullable="false" />
+          <Property Type="Int64" Name="LLAVE_USUARIO" Nullable="true" />
+          <Property Type="String" Name="NOMBRE" Nullable="true" />
+          <Property Type="String" Name="PATERNO" Nullable="true" />
+          <Property Type="String" Name="MATERNO" Nullable="true" />
+          <Property Type="String" Name="CIUDAD" Nullable="true" />
+          <Property Type="String" Name="CALLE" Nullable="true" />
+          <Property Type="String" Name="NUMERO" Nullable="true" />
+          <Property Type="String" Name="COLONIA" Nullable="true" />
+          <Property Type="String" Name="TELEFONO" Nullable="true" />
+          <Property Type="String" Name="OTRO_TEL" Nullable="true" />
+          <Property Type="DateTime" Name="FECHA_NAC" Nullable="true" />
+          <Property Type="String" Name="CURP" Nullable="true" />
+          <Property Type="String" Name="RFC" Nullable="true" />
+          <Property Type="String" Name="PASAPORTE" Nullable="true" />
+          <Property Type="String" Name="CARTILLA" Nullable="true" />
+          <Property Type="String" Name="GENERO" Nullable="true" />
+          <Property Type="String" Name="EDO_CIVIL" Nullable="true" />
+          <Property Type="DateTime" Name="FECHA_ALTA" Nullable="true" Precision="23" />
+          <Property Type="String" Name="MUN" Nullable="true" />
+          <Property Type="String" Name="EDO" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CtxBOLSA_EXAMENStoreContainer" CdmEntityContainer="BOLSA_EXAMENEntities">
+          <EntitySetMapping Name="DATOS_PERSONALES">
+            <EntityTypeMapping TypeName="CtxBOLSA_EXAMEN.DATOS_PERSONALES">
+              <MappingFragment StoreEntitySet="DATOS_PERSONALES">
+                <ScalarProperty Name="LLAVE_DATO_PERSONAL" ColumnName="LLAVE_DATO_PERSONAL" />
+                <ScalarProperty Name="LLAVE_USUARIO" ColumnName="LLAVE_USUARIO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="PATERNO" ColumnName="PATERNO" />
+                <ScalarProperty Name="MATERNO" ColumnName="MATERNO" />
+                <ScalarProperty Name="CIUDAD" ColumnName="CIUDAD" />
+                <ScalarProperty Name="CALLE" ColumnName="CALLE" />
+                <ScalarProperty Name="NUMERO" ColumnName="NUMERO" />
+                <ScalarProperty Name="COLONIA" ColumnName="COLONIA" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="OTRO_TEL" ColumnName="OTRO_TEL" />
+                <ScalarProperty Name="FECHA_NAC" ColumnName="FECHA_NAC" />
+                <ScalarProperty Name="CURP" ColumnName="CURP" />
+                <ScalarProperty Name="RFC" ColumnName="RFC" />
+                <ScalarProperty Name="PASAPORTE" ColumnName="PASAPORTE" />
+                <ScalarProperty Name="CARTILLA" ColumnName="CARTILLA" />
+                <ScalarProperty Name="GENERO" ColumnName="GENERO" />
+                <ScalarProperty Name="EDO_CIVIL" ColumnName="EDO_CIVIL" />
+                <ScalarProperty Name="FECHA_ALTA" ColumnName="FECHA_ALTA" />
+                <ScalarProperty Name="MUN" ColumnName="MUN" />
+                <ScalarProperty Name="EDO" ColumnName="EDO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EXP_LABORAL">
+            <EntityTypeMapping TypeName="CtxBOLSA_EXAMEN.EXP_LABORAL">
+              <MappingFragment StoreEntitySet="EXP_LABORAL">
+                <ScalarProperty Name="LLAVE_EXP_LAB" ColumnName="LLAVE_EXP_LAB" />
+                <ScalarProperty Name="LLAVE_USUARIO" ColumnName="LLAVE_USUARIO" />
+                <ScalarProperty Name="PUESTO" ColumnName="PUESTO" />
+                <ScalarProperty Name="FUNCIONES" ColumnName="FUNCIONES" />
+                <ScalarProperty Name="EMPRESA" ColumnName="EMPRESA" />
+                <ScalarProperty Name="NO_EMPLEADOS" ColumnName="NO_EMPLEADOS" />
+                <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
+                <ScalarProperty Name="FECHA_FIN" ColumnName="FECHA_FIN" />
+                <ScalarProperty Name="RET_MENS_BRUTA" ColumnName="RET_MENS_BRUTA" />
+                <ScalarProperty Name="RET_MENS_NETA" ColumnName="RET_MENS_NETA" />
+                <ScalarProperty Name="FECHA_ALTA" ColumnName="FECHA_ALTA" />
+                <ScalarProperty Name="PAIS" ColumnName="PAIS" />
+                <ScalarProperty Name="LLAVE_DATO_PERSONAL" ColumnName="LLAVE_DATO_PERSONAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIOS">
+            <EntityTypeMapping TypeName="CtxBOLSA_EXAMEN.USUARIOS">
+              <MappingFragment StoreEntitySet="USUARIOS">
+                <ScalarProperty Name="LLAVE_USUARIO" ColumnName="LLAVE_USUARIO" />
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="PASS" ColumnName="PASS" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="FECHA_ALTA" ColumnName="FECHA_ALTA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="database_firewall_rules">
+            <EntityTypeMapping TypeName="CtxBOLSA_EXAMEN.database_firewall_rules">
+              <MappingFragment StoreEntitySet="database_firewall_rules">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="start_ip_address" ColumnName="start_ip_address" />
+                <ScalarProperty Name="end_ip_address" ColumnName="end_ip_address" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="modify_date" ColumnName="modify_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ALL_USERS" FunctionName="CtxBOLSA_EXAMEN.Store.ALL_USERS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CtxBOLSA_EXAMEN.ALL_USERS_Result">
+                <ScalarProperty Name="LLAVE_USUARIO" ColumnName="LLAVE_USUARIO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="PATERNO" ColumnName="PATERNO" />
+                <ScalarProperty Name="MATERNO" ColumnName="MATERNO" />
+                <ScalarProperty Name="CIUDAD" ColumnName="CIUDAD" />
+                <ScalarProperty Name="GENERO" ColumnName="GENERO" />
+                <ScalarProperty Name="FECHA_NAC" ColumnName="FECHA_NAC" />
+                <ScalarProperty Name="CURP" ColumnName="CURP" />
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="INSERT_USER" FunctionName="CtxBOLSA_EXAMEN.Store.INSERT_USER" />
+          <FunctionImportMapping FunctionImportName="SELECT_USER" FunctionName="CtxBOLSA_EXAMEN.Store.SELECT_USER">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CtxBOLSA_EXAMEN.SELECT_USER_Result">
+                <ScalarProperty Name="LLAVE_DATO_PERSONAL" ColumnName="LLAVE_DATO_PERSONAL" />
+                <ScalarProperty Name="LLAVE_USUARIO" ColumnName="LLAVE_USUARIO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="PATERNO" ColumnName="PATERNO" />
+                <ScalarProperty Name="MATERNO" ColumnName="MATERNO" />
+                <ScalarProperty Name="CIUDAD" ColumnName="CIUDAD" />
+                <ScalarProperty Name="CALLE" ColumnName="CALLE" />
+                <ScalarProperty Name="NUMERO" ColumnName="NUMERO" />
+                <ScalarProperty Name="COLONIA" ColumnName="COLONIA" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="OTRO_TEL" ColumnName="OTRO_TEL" />
+                <ScalarProperty Name="FECHA_NAC" ColumnName="FECHA_NAC" />
+                <ScalarProperty Name="CURP" ColumnName="CURP" />
+                <ScalarProperty Name="RFC" ColumnName="RFC" />
+                <ScalarProperty Name="PASAPORTE" ColumnName="PASAPORTE" />
+                <ScalarProperty Name="CARTILLA" ColumnName="CARTILLA" />
+                <ScalarProperty Name="GENERO" ColumnName="GENERO" />
+                <ScalarProperty Name="EDO_CIVIL" ColumnName="EDO_CIVIL" />
+                <ScalarProperty Name="FECHA_ALTA" ColumnName="FECHA_ALTA" />
+                <ScalarProperty Name="MUN" ColumnName="MUN" />
+                <ScalarProperty Name="EDO" ColumnName="EDO" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
